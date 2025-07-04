@@ -1,6 +1,6 @@
 ## Automation-Testing-in-Python
 
-The course relates to Udemy course (Automated Software Testing with Python)[https://www.udemy.com/course/automated-software-testing-with-python/]
+The course relates to Udemy course [Automated Software Testing with Python](https://www.udemy.com/course/automated-software-testing-with-python/)
 
 Content:
 1. Python Fundamentals:
