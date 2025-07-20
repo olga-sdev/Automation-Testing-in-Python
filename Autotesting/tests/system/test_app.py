@@ -35,3 +35,11 @@ class AppTest(TestCase):
         with patch('builtins.print') as mocked_print:
             app.print_blogs()
             mocked_print.assert_called_with('- Test by Test Author (0 posts)')
+
+    def test_ask_create_blog(self):
+        with patch('builtins.input') as mocked_input:
+            # side_effect returns the values from the set when the mock is called - each time 1 value
+            mocked_input.side_effect = ('Test', 'Test Author')
+            app.ask_create_blog()
+            # when get the key Test from app.blogs it'll not be None
+            self.assertIsNotNone(app.blogs.get('Test'))
