@@ -43,3 +43,12 @@ class AppTest(TestCase):
             app.ask_create_blog()
             # when get the key Test from app.blogs it'll not be None
             self.assertIsNotNone(app.blogs.get('Test'))
+
+    def test_ask_read_blog(self):
+        blog = app.blogs['Test']
+        with patch('builtins.input', return_value='Test'):
+            with patch('app.print_posts') as mocked_print_posts:
+                app.ask_read_blog()
+
+                mocked_print_posts.assert_called_with(blog)
+                
