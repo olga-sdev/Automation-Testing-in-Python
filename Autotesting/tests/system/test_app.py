@@ -49,6 +49,14 @@ class AppTest(TestCase):
         with patch('builtins.input', return_value='Test'):
             with patch('app.print_posts') as mocked_print_posts:
                 app.ask_read_blog()
-
                 mocked_print_posts.assert_called_with(blog)
                 
+    
+    def test_print_posts(self):
+        blog = app.blogs['Test']
+        blog.create_post('Test Post', 'Test Content')
+
+        with patch('app.print_posts') as mocked_print_post:
+            app.print_posts(blog)
+
+            mocked_print_post.assert_called()
