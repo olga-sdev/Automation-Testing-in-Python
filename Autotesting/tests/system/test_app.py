@@ -60,3 +60,17 @@ class AppTest(TestCase):
             app.print_posts(blog)
 
             mocked_print_post.assert_called()
+
+    
+    def test_ask_create_post(self):
+        blog = app.blogs['Test']
+
+        with patch('builtins.input') as mocked_input:
+            mocked_input.side_effect = ('Test',
+                                        'Test Title',
+                                        'Test Content')
+
+            app.ask_create_post()
+
+            self.assertEqual(blog.posts[0].title, 'Test Title')
+            self.assertEqual(blog.posts[0].content, 'Test Content')
