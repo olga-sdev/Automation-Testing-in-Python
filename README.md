@@ -14,3 +14,5 @@ Content:
    * class and static methods;
    * type hinting
 
+2. Autotesting
+3. Autotests API Flask (Part 1 | Part 2)
