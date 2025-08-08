@@ -22,3 +22,16 @@ class StoreTest(BaseTest):
             store.delete_from_db()
 
             self.assertIsNone(StoreModel.find_by_name('test'))
+
+    def test_store_relationship(self):
+        with self.app_context():
+            store = StoreModel('test')
+            item = ItemModel('test_item', 14, 1)
+
+            store.save_to_db()
+            item.save_to_db()
+
+            self.assertEqual(store.items.count(), 1)
+            self.assertEqual(store.items.first().name, 'test_item')
+
+    
