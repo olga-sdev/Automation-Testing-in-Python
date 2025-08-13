@@ -18,3 +18,10 @@ class ItemTest(BaseTest):
 
                 auth_token = json.loads(auth_request.data)['access_token']
                 self.access_token = f'JWT {auth_token}'
+
+
+    def test_get_item_no_auth(self):
+        with self.app() as client:
+            with self.app_context():
+                resp = client.get('/item/test')
+                self.assertEqual(resp.status_code, 401)
