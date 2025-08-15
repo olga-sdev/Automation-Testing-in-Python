@@ -34,3 +34,16 @@ class ItemTest(BaseTest):
                                   headers={'Authorization': self.access_token})
                 self.assertEual(resp.status_code, 404)
 
+    
+    def test_get_item(self):
+        with self.app() as client:
+            with self.app_context():
+                StoreModel('test').save_to_db()
+                ItemModel('test', 14, 1).save_to_db()
+
+                resp = client.get('/item/test',
+                                  headers={'Authorization': self.access_token})
+                self.assertEqual(resp.status_code, 200)
+
+
+
