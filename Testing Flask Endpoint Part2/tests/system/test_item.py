@@ -56,3 +56,14 @@ class ItemTest(BaseTest):
                                   headers={'Authorization': self.access_token})
                 self.assertEqual(resp.status_code, 200)
 
+    
+    def test_delete_item(self):
+        with self.app() as client:
+            with self.app_context():
+                StoreModel('test').save_to_db()
+                ItemModel('test', 14, 1).save_to_db()
+
+                resp = client.delete('/item/test')
+                self.assertEqual(resp.status_code, 200)
+                self.assertDictEqual({'message': 'Item deleted'},
+                                     json.loads(resp.data))
