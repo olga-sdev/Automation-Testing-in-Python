@@ -1,4 +1,4 @@
-## Automation-Testing-in-Python
+## Automation-Testing-in-Python ...In Progress 💬
 
 The course relates to Udemy course [Automated Software Testing with Python](https://www.udemy.com/course/automated-software-testing-with-python/)
 
@@ -16,3 +16,4 @@ Content:
 
 2. Autotesting
 3. Autotests API Flask (Part 1 | Part 2)
+4. Acceptance Testing | Selenium
