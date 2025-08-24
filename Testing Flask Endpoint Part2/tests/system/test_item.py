@@ -128,3 +128,16 @@ class ItemTest(BaseTest):
                 self.assertDictEqual({'name': 'test',
                                       'price': 14},
                                      json.loads(resp.data))
+
+
+    def test_item_list(self):
+        with self.app() as client:
+            with self.app_context():
+                StoreModel('test').save_to_db()
+                ItemModel('test', 6, 1).save_to_db()
+
+                resp = client.get('/items')
+
+                self.assertDictEqual({'items': [{'name': 'test',
+                                      'price': 6}]},
+                                     json.loads(resp.data))
